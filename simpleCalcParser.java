@@ -91,11 +91,10 @@ public class simpleCalcParser extends Parser {
 	}
 
 	public static class StartContext extends ParserRuleContext {
-		public ExprContext e;
-		public TerminalNode EOF() { return getToken(simpleCalcParser.EOF, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
+		public TerminalNode EOF() { return getToken(simpleCalcParser.EOF, 0); }
 		public StartContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -108,6 +107,11 @@ public class simpleCalcParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof simpleCalcListener ) ((simpleCalcListener)listener).exitStart(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof simpleCalcVisitor ) return ((simpleCalcVisitor<? extends T>)visitor).visitStart(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StartContext start() throws RecognitionException {
@@ -117,7 +121,7 @@ public class simpleCalcParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(4);
-			((StartContext)_localctx).e = expr(0);
+			expr(0);
 			setState(5);
 			match(EOF);
 			}
@@ -156,6 +160,11 @@ public class simpleCalcParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof simpleCalcListener ) ((simpleCalcListener)listener).exitNUMBER(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof simpleCalcVisitor ) return ((simpleCalcVisitor<? extends T>)visitor).visitNUMBER(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PARENTHESESContext extends ExprContext {
 		public ExprContext e;
@@ -171,6 +180,11 @@ public class simpleCalcParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof simpleCalcListener ) ((simpleCalcListener)listener).exitPARENTHESES(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof simpleCalcVisitor ) return ((simpleCalcVisitor<? extends T>)visitor).visitPARENTHESES(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class SQRTContext extends ExprContext {
 		public ExprContext e1;
@@ -185,6 +199,11 @@ public class simpleCalcParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof simpleCalcListener ) ((simpleCalcListener)listener).exitSQRT(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof simpleCalcVisitor ) return ((simpleCalcVisitor<? extends T>)visitor).visitSQRT(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class POWERContext extends ExprContext {
@@ -204,6 +223,11 @@ public class simpleCalcParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof simpleCalcListener ) ((simpleCalcListener)listener).exitPOWER(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof simpleCalcVisitor ) return ((simpleCalcVisitor<? extends T>)visitor).visitPOWER(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class MULTI_DEVIContext extends ExprContext {
@@ -225,6 +249,11 @@ public class simpleCalcParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof simpleCalcListener ) ((simpleCalcListener)listener).exitMULTI_DEVI(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof simpleCalcVisitor ) return ((simpleCalcVisitor<? extends T>)visitor).visitMULTI_DEVI(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class ADD_SUBContext extends ExprContext {
 		public ExprContext e1;
@@ -245,6 +274,11 @@ public class simpleCalcParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof simpleCalcListener ) ((simpleCalcListener)listener).exitADD_SUB(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof simpleCalcVisitor ) return ((simpleCalcVisitor<? extends T>)visitor).visitADD_SUB(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class MinusContext extends ExprContext {
 		public Token op;
@@ -260,6 +294,11 @@ public class simpleCalcParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof simpleCalcListener ) ((simpleCalcListener)listener).exitMinus(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof simpleCalcVisitor ) return ((simpleCalcVisitor<? extends T>)visitor).visitMinus(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

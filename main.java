@@ -49,7 +49,7 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
 	
 	//
     public Double visitStart(simpleCalcParser.StartContext ctx){
-		return visit(ctx.e);
+		return visit(ctx.expr());
 	};
 	
 	public Double visitPOWER(simpleCalcParser.POWERContext ctx){

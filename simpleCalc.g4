@@ -1,6 +1,6 @@
 grammar simpleCalc;
 
-start   : e=expr EOF;
+start   : expr EOF;
 
 // Rules
 expr : 
@@ -14,21 +14,7 @@ expr :
      ;
 
 
-
-// PARENTHESESR      : ')';
-// PARENTHESESL      : '(';
-// POWER             : '^';
-// SQR               : 'sqrt'PARENTHESESL;
-// MULTI_DEVI        : (MULTIPLICATION | DIVISION);
-// MULTIPLICATION    : '*';
-// DIVISION          : '/';
-// ADD_SUB           : (ADDITION | SUBTRACTION);
-// ADDITION          :'+';
-// SUBTRACTION       :'-';
-
-
-// RegEx
 NUMBER              : [0-9]+ ('.' [0-9]+)? ;
-WHITESPACES         : [ \t\n]+ -> skip ;
+WHITESPACES         : [ \t\n\r]+ -> skip ;
 COMMENT             : ('//' (~[\n])*) -> skip ;
 MULTILINECOMMENTS   :  ( '/*'  (( '*'~[/] | ~[*]  )*) '*/') -> skip; 
